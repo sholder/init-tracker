@@ -34,6 +34,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/entity', {
+        templateUrl: 'views/entity.html',
+        controller: 'EntityCtrl',
+        controllerAs: 'entity'
+      })
       .otherwise({
         redirectTo: '/'
       });

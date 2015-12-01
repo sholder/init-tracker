@@ -15,8 +15,13 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.sortable',
+    'LocalStorageModule'
   ])
+  .config(['localStorageServiceProvider', function(localStorageProvider){
+    localStorageProvider.setPrefix('com.teamholder.inittracker');
+  }])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

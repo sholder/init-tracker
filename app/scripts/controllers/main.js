@@ -8,10 +8,8 @@
  * Controller of the initTrackerApp
  */
 angular.module('initTrackerApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, localStorageService) {
+    var allEntities = localStorageService.get('entities');
+
+    $scope.allEntities = allEntities || [];
   });

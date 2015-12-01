@@ -17,8 +17,15 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.sortable',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'checklist-model'
   ])
+  .factory('encounterSelectionService', function() {
+    var encounterSelectionService = {
+      selection: [],
+    };
+    return encounterSelectionService;
+  })
   .config(['localStorageServiceProvider', function(localStorageProvider){
     localStorageProvider.setPrefix('com.teamholder.inittracker');
   }])
@@ -38,6 +45,11 @@ angular
         templateUrl: 'views/entity.html',
         controller: 'EntityCtrl',
         controllerAs: 'entity'
+      })
+      .when('/fight', {
+        templateUrl: 'views/fight.html',
+        controller: 'FightCtrl',
+        controllerAs: 'fight'
       })
       .otherwise({
         redirectTo: '/'

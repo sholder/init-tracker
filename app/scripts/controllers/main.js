@@ -20,9 +20,9 @@ angular.module('initTrackerApp')
         encounterSelectionService.selection.length = 0;
         for (var i = 0; i < $scope.allEntities.length; i++) {
             var e = $scope.allEntities[i];
-            $log.debug('considering ' + e.name);
+            //$log.debug('considering ' + e.name);
             if ($scope.selected.indexOf(e.name) !== -1) {
-                $log.debug('found');
+                //$log.debug('found');
                 encounterSelectionService.selection.push(e);
             }
         }

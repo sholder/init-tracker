@@ -13,9 +13,12 @@
     </form>
 
     <h1>Current Entities</h1>
-    <p class="form-group" ng-repeat="entity in allEntities">
-        <input type="text" ng-model="entity.name" class="form-control">
-        Init mod:
-        <input type="number" ng-model="entity.mod" class="form-control">
-    </p>
+    <div class="form-group row" ng-repeat="entity in allEntities">
+        <div class="col-xs-3">
+            <label>Name:</label> <input type="text" ng-model="entity.name" class="form-control">
+        </div>
+        <div class="col-xs-2">
+            <label>Init mod:</label> <input type="number" ng-model="entity.mod" class="form-control">
+        </div>
+    </div>
 </div>

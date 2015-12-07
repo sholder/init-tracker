@@ -1,6 +1,7 @@
 <div class="jumbotron">
   <h1>Initiative Tracker</h1>
-  <p><a class="btn btn-lg btn-primary" ng-href="#/fight" role="button">New Fight With Selected!</a></p>
+  <p>Select from below, then start a </p>
+  <p><a class="btn btn-lg btn-primary" ng-href="#/fight" role="button">New Encounter</a></p>
   
   <div ng-repeat="entity in allEntities" ng-controller="FightCtrl">
       <input type="checkbox" checklist-model="selected" checklist-value="entity.name">

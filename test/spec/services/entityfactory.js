@@ -23,11 +23,22 @@ describe('Service: EntityFactory', function () {
     var entity = EntityFactory.newEntity();
     expect(entity.name).toEqual('');
     expect(entity.mod).toEqual(0);
+    expect(entity.isFixedScore()).toBeFalsy();
   });
 
   it('should create initialized entities', function() {
     var entity = EntityFactory.initialize('zaxxon', 2);
     expect(entity.name).toEqual('zaxxon');
     expect(entity.mod).toEqual(2);
+    expect(entity.isFixedScore()).toBeFalsy();
+  });
+
+  it('should create entities that allow setting fixed scores', function() {
+    var lairActionsEntity = EntityFactory.initialize('Lair Actions', 20);
+    lairActionsEntity.setFixedScore(true);
+    expect(lairActionsEntity.isFixedScore()).toBeTruthy();
+    expect(lairActionsEntity.fixedScore).toEqual(20);
+    lairActionsEntity.setFixedScore(false);
+    expect(lairActionsEntity.isFixedScore()).toBeFalsy();
   });
 });

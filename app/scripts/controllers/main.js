@@ -8,10 +8,10 @@
  * Controller of the initTrackerApp
  */
 angular.module('initTrackerApp')
-  .controller('MainCtrl', function ($scope, $log, localStorageService, encounterSelectionService) {
+  .controller('MainCtrl', function ($scope, $log, localStorageService, encounterSelectionService, EntityFactory) {
     var allEntities = localStorageService.get('entities');
 
-    $scope.allEntities = allEntities || [];
+    $scope.allEntities = EntityFactory.deserializeAll(allEntities || []);
     $scope.selected = [];
 
     $scope.$watch('selected', function() {

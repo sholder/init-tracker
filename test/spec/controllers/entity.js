@@ -40,6 +40,9 @@ describe('Controller: EntityCtrl', function () {
     expect(scope.allEntities).toContain(palindraEntity);
     var persistedEntities = storageService.get('entities');
     expect(persistedEntities.length).toEqual(1);
-    expect(persistedEntities).toContain(palindraEntity);
+    // Persisted entities don't exactly match, because attached functions
+    // are stripped when writing to the store. So we can't use toContain().
+    expect(persistedEntities[0].name).toEqual(palindraEntity.name);
+    expect(persistedEntities[0].mod).toEqual(palindraEntity.mod);
   });
 });

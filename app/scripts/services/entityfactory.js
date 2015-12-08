@@ -25,12 +25,7 @@ angular.module('initTrackerApp')
     // Public API here
     return {
       newEntity: function () {
-        return {
-          name: '',
-          mod: 0,
-          isFixedScore: isFixedScore,
-          setFixedScore: setFixedScore
-        };
+        return this.initialize('', 0);
       },
       initialize: function(name, mod) {
         return {

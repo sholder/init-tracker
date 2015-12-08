@@ -3,6 +3,7 @@
 describe('Controller: EntityCtrl', function () {
 
   var EntityCtrl,
+    entityFactory,
     scope,
     storageService;
 
@@ -11,9 +12,10 @@ describe('Controller: EntityCtrl', function () {
 
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, localStorageService) {
+  beforeEach(inject(function ($controller, $rootScope, localStorageService, EntityFactory) {
     scope = $rootScope.$new();
     storageService = localStorageService;
+    entityFactory = EntityFactory;
 
     storageService.set('entities', []);
 
@@ -28,16 +30,13 @@ describe('Controller: EntityCtrl', function () {
   });
 
   it('should add and persist an entity', function() {
-    var palindraEntity = {
-      name: 'Palindra',
-      mod: 4
-    };
+    var palindraEntity = entityFactory.initialize('Palindra', 4);
     scope.entity = palindraEntity;
     scope.addEntity();
     // Ensure that watches fire.
     scope.$apply();
 
-    expect(scope.entity).toEqual({});
+    expect(scope.entity).toEqual(entityFactory.newEntity());
     expect(scope.allEntities).toContain(palindraEntity);
     var persistedEntities = storageService.get('entities');
     expect(persistedEntities.length).toEqual(1);

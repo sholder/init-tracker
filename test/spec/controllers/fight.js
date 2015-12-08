@@ -10,12 +10,12 @@ describe('Controller: FightCtrl', function () {
     encounterSelectionServiceMock;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, EntityFactory) {
     scope = $rootScope.$new();
     encounterSelectionServiceMock = {
       selection: [
-        {name: 'Glory', mod: 0},
-        {name: 'Goblin', mod: 0}
+        EntityFactory.initialize('Glory', 0),
+        EntityFactory.initialize('Goblin', 0)
       ],
     };
     FightCtrl = $controller('FightCtrl', {

@@ -14,12 +14,12 @@ describe('Controller: MainCtrl', function () {
 
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, localStorageService) {
+  beforeEach(inject(function ($controller, $rootScope, localStorageService, EntityFactory) {
     scope = $rootScope.$new();
     // created them in non-sorted order, we'll test sorting below
     // Yes, these are PCs from my campaign.
-    zaxxonEntity = {name:'Zaxxon', mod: 1};
-    treeceEntity = {name:'Treece', mode: 4};
+    zaxxonEntity = EntityFactory.initialize('Zaxxon', 1);
+    treeceEntity = EntityFactory.initialize('Treece', 4);
 
     defaultEntities = [
       zaxxonEntity,

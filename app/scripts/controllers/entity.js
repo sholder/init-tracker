@@ -8,9 +8,10 @@
  * Controller of the initTrackerApp
  */
 angular.module('initTrackerApp')
-  .controller('EntityCtrl', function ($scope, localStorageService) {
+  .controller('EntityCtrl', function ($scope, EntityFactory, localStorageService) {
     var allEntities = localStorageService.get('entities');
     $scope.allEntities = allEntities || [];
+    $scope.entity = EntityFactory.newEntity();
     
     $scope.$watch('allEntities', function() {
         localStorageService.set('entities', $scope.allEntities);
@@ -18,6 +19,6 @@ angular.module('initTrackerApp')
 
     $scope.addEntity = function() {
         $scope.allEntities.push($scope.entity);
-        $scope.entity = {};
+        $scope.entity = EntityFactory.newEntity();
     };
   });
